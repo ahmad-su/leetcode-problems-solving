@@ -1,5 +1,5 @@
 mod structs;
-//use structs::*;
+use structs::*;
 
 //problems #1. Two Sum ~ Easy
 pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
@@ -106,19 +106,55 @@ pub fn is_valid(s: String) -> bool {
     let mut stack = Vec::<char>::new();
     for ch in s.chars() {
         match ch {
-            '(' => {stack.push(ch);},
-            '{' => {stack.push(ch)},
-            '[' => {stack.push(ch)},
-            ')' => (if stack.pop() != Some('(') {return false}),
-            ']' => (if stack.pop() != Some('[') {return false}),
-            '}' => (if stack.pop() != Some('{') {return false}),
+            '(' => {
+                stack.push(ch);
+            }
+            '{' => stack.push(ch),
+            '[' => stack.push(ch),
+            ')' => {
+                if stack.pop() != Some('(') {
+                    return false;
+                }
+            }
+            ']' => {
+                if stack.pop() != Some('[') {
+                    return false;
+                }
+            }
+            '}' => {
+                if stack.pop() != Some('{') {
+                    return false;
+                }
+            }
             _ => return false,
         }
     }
-    if stack.len() != 0 {return false}
+    if stack.len() != 0 {
+        return false;
+    }
     true
 }
 
+//problems #21. Merge Two Sorted List ~ Easy
+pub fn merge_two_lists(
+    list1: Option<Box<ListNode>>, 
+    list2: Option<Box<ListNode>>,) -> Option<Box<ListNode>> {
+
+        match (list1, list2) {
+            (None, None) => None,
+            (Some(x), None) | (None, Some(x)) => Some(x),
+            (Some(mut x),Some(mut y)) => {
+                if x.val <= y.val {
+                    x.next = merge_two_lists(Some(y), x.next);
+                    Some(x)
+                } else {
+                    y.next = merge_two_lists(Some(x), y.next);
+                    Some(y)
+                }
+            }
+        }
+
+}
 //problems #557. Reverse Words in a string III ~ Easy
 pub fn reverse_words(s: String) -> String {
     let mut string_vec = Vec::<String>::new();

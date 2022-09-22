@@ -28,7 +28,8 @@ pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
 //problems #9. Palindrome Number ~ Easy
 pub fn is_palindrome(x: i32) -> bool {
     let num = x.to_string();
-    let num_reverse = String::from_utf8(num.as_bytes().to_owned().into_iter().rev().collect()).unwrap();
+    let num_reverse =
+        String::from_utf8(num.as_bytes().to_owned().into_iter().rev().collect()).unwrap();
     //in case leetcode has from_iter func, use this instead:
     // let num_reverse =
     //     String::from_iter(num.clone().chars().rev());
@@ -83,14 +84,39 @@ pub fn roman_to_int(s: String) -> i32 {
 //problems #14. Longest Common Prefix ~ Easy
 pub fn longest_common_prefix(strs: Vec<String>) -> String {
     let mut chars = String::new();
-    for (i,ch) in strs[0].chars().enumerate() {
-        if strs.iter().map(|str| str.chars().nth(i)).all(|x| x == Some(ch)) {
+    for (i, ch) in strs[0].chars().enumerate() {
+        if strs
+            .iter()
+            .map(|str| str.chars().nth(i))
+            .all(|x| x == Some(ch))
+        {
             chars = chars + String::from(ch).as_ref();
         } else {
-            return chars
+            return chars;
         }
     }
     chars
+}
+
+//problem #20. Valid Parentheses ~ Easy
+pub fn is_valid(s: String) -> bool {
+    if s.len() % 2 == 1 {
+        return false;
+    }
+    let mut stack = Vec::<char>::new();
+    for ch in s.chars() {
+        match ch {
+            '(' => {stack.push(ch);},
+            '{' => {stack.push(ch)},
+            '[' => {stack.push(ch)},
+            ')' => (if stack.pop() != Some('(') {return false}),
+            ']' => (if stack.pop() != Some('[') {return false}),
+            '}' => (if stack.pop() != Some('{') {return false}),
+            _ => return false,
+        }
+    }
+    if stack.len() != 0 {return false}
+    true
 }
 
 //problems #557. Reverse Words in a string III ~ Easy

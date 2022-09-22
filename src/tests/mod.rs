@@ -42,7 +42,22 @@ use crate::*;
 
     }
 
-    //problem 557. Reverse Words in a string ~ Easy
+    //problem #20. Valid Parentheses ~ Easy
+    #[test]
+    fn is_valid_worked(){
+        let s_true1 = "()[]{}".to_string();
+        let s_true2 = "({[]})".to_string();
+        let s_false1 = "(]".to_string();
+        let s_false2 = "((".to_string();
+        
+
+        assert_eq!(is_valid(s_true1), true);
+        assert_eq!(is_valid(s_true2), true);
+        assert_ne!(is_valid(s_false1), true);
+        assert_ne!(is_valid(s_false2), true);
+    }
+
+    //problem #557. Reverse Words in a string ~ Easy
     #[test]
     fn reverse_words_worked(){
         let s = "Let's take LeetCode contest".to_string();

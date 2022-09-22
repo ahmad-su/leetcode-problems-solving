@@ -41,3 +41,10 @@ use crate::*;
         assert_ne!(longest_common_prefix(strs_fail2), "fl")
 
     }
+
+    //problem 557. Reverse Words in a string ~ Easy
+    #[test]
+    fn reverse_words_worked(){
+        let s = "Let's take LeetCode contest".to_string();
+        assert_eq!(reverse_words(s), "s'teL ekat edoCteeL tsetnoc")
+    }

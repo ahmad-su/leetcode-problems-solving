@@ -93,6 +93,30 @@ pub fn longest_common_prefix(strs: Vec<String>) -> String {
     chars
 }
 
+//problems #557. Reverse Words in a string III ~ Easy
+pub fn reverse_words(s: String) -> String {
+    let mut string_vec = Vec::<String>::new();
+    let mut str_buf = String::new();
+    let mut s = s;
 
+    while let Some(ch) = s.pop() {
+        if ch == ' ' {
+            str_buf.push(ch);
+            string_vec.push(str_buf.clone());
+            str_buf.clear();
+        } else {
+            str_buf.push(ch);
+        }
+    }
+    str_buf.push(' ');
+    string_vec.push(str_buf.clone());
+    str_buf.clear();
+
+    while let Some(str) = string_vec.pop() {
+        str_buf = str_buf + str.as_ref();
+    }
+    let final_len = str_buf.len() - 1;
+    str_buf[..final_len].to_string()
+}
 #[cfg(test)]
 mod tests;

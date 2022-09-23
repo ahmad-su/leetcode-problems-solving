@@ -102,6 +102,14 @@ fn merge_two_lists_worked() {
     assert_eq!(merge_two_lists(list1, list2), expected_result)
 }
 
+//problem #26. Remove Duplicates from Sorted Array ~ Easy
+#[test]
+fn remove_duplicates_worked(){
+    let mut nums = vec![0,0,1,1,1,2,2,3,3,4];
+    let expected_result = vec![0,1,2,3,4];
+    assert_eq!(remove_duplicates(&mut nums), expected_result.len() as i32);
+}
+
 //problem #557. Reverse Words in a string ~ Easy
 #[test]
 fn reverse_words_worked() {

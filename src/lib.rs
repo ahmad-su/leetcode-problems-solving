@@ -156,6 +156,13 @@ pub fn merge_two_lists(
 
 }
 
+
+//problems #26. Remove Duplicates from Sorted Array ~ Easy
+pub fn remove_duplicates(nums: &mut Vec<i32>) -> i32 {
+    nums.dedup();
+    nums.len() as i32
+}
+
 //problems #557. Reverse Words in a string III ~ Easy
 pub fn reverse_words(s: String) -> String {
     let mut string_vec = Vec::<String>::new();

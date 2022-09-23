@@ -110,9 +110,46 @@ fn remove_duplicates_worked(){
     assert_eq!(remove_duplicates(&mut nums), expected_result.len() as i32);
 }
 
+//problem #27. Remove element from array ~ Easy
+#[test]
+fn remove_element_worked(){
+    let mut nums = vec![0,1,2,2,3,0,4,2];
+    let val = 2;
+    let output= 5;
+    let _output_nums = [0,1,4,0,3,];
+
+    assert_eq!(remove_element(&mut nums, val), output);
+}
+
+//problem #35. Search Insert Position ~ Easy
+#[test]
+fn search_insert_worked(){
+    let (nums1, target1, expect1) = 
+        (vec![1,3,5,6], 5, 2);
+    
+    let (nums2, target2, expect2) =
+        (vec![1,3,5,6], 2, 1);
+
+    assert_eq!(search_insert(nums1, target1), expect1);
+    assert_eq!(search_insert(nums2, target2), expect2);
+
+}
+
 //problem #557. Reverse Words in a string ~ Easy
 #[test]
 fn reverse_words_worked() {
     let s = "Let's take LeetCode contest".to_string();
     assert_eq!(reverse_words(s), "s'teL ekat edoCteeL tsetnoc")
+}
+
+// problem #1680. Concatenation of Consecutive Binary Numbers
+#[test]
+fn concatenated_binary_worked() {
+    let input1 = 3 ;
+    let expect1 = 27;
+    let input2 = 12 ;
+    let expect2 = 505379714;
+
+    assert_eq!(concatenated_binary(input1), expect1);
+    assert_eq!(concatenated_binary(input2), expect2);
 }

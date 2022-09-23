@@ -1,7 +1,8 @@
 mod structs;
+
 use structs::*;
 
-//problems #1. Two Sum ~ Easy
+//problem #1. Two Sum ~ Easy
 pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
     use std::collections::HashMap;
 
@@ -25,7 +26,7 @@ pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
     result[0..2].to_vec()
 }
 
-//problems #9. Palindrome Number ~ Easy
+//problem #9. Palindrome Number ~ Easy
 pub fn is_palindrome(x: i32) -> bool {
     let num = x.to_string();
     let num_reverse =
@@ -40,7 +41,7 @@ pub fn is_palindrome(x: i32) -> bool {
     }
 }
 
-//problems #13. Roman to Integer ~ Easy
+//problem #13. Roman to Integer ~ Easy
 pub fn roman_to_int(s: String) -> i32 {
     use std::collections::HashMap;
     //create dictionary to store roman values
@@ -81,7 +82,7 @@ pub fn roman_to_int(s: String) -> i32 {
     sum
 }
 
-//problems #14. Longest Common Prefix ~ Easy
+//problem #14. Longest Common Prefix ~ Easy
 pub fn longest_common_prefix(strs: Vec<String>) -> String {
     let mut chars = String::new();
     for (i, ch) in strs[0].chars().enumerate() {
@@ -135,7 +136,7 @@ pub fn is_valid(s: String) -> bool {
     true
 }
 
-//problems #21. Merge Two Sorted List ~ Easy
+//problem #21. Merge Two Sorted List ~ Easy
 pub fn merge_two_lists(
     list1: Option<Box<ListNode>>, 
     list2: Option<Box<ListNode>>,) -> Option<Box<ListNode>> {
@@ -157,13 +158,27 @@ pub fn merge_two_lists(
 }
 
 
-//problems #26. Remove Duplicates from Sorted Array ~ Easy
+//problem #26. Remove Duplicates from Sorted Array ~ Easy
 pub fn remove_duplicates(nums: &mut Vec<i32>) -> i32 {
     nums.dedup();
     nums.len() as i32
 }
 
-//problems #557. Reverse Words in a string III ~ Easy
+//problem #27. Remove Element from array ~ Easy
+pub fn remove_element(nums: &mut Vec<i32>, val: i32) -> i32 {
+    nums.retain(|x| x != &val);
+    nums.len() as _
+}
+
+//problem #35. Search Insert Position ~ Easy
+pub fn search_insert(nums: Vec<i32>, target: i32) -> i32 {
+    match nums.binary_search(&target) {
+        Ok(n) => n as _,
+        Err(n) => n as _,
+    }
+}
+
+//problem #557. Reverse Words in a string III ~ Easy
 pub fn reverse_words(s: String) -> String {
     let mut string_vec = Vec::<String>::new();
     let mut str_buf = String::new();
@@ -187,6 +202,21 @@ pub fn reverse_words(s: String) -> String {
     }
     let final_len = str_buf.len() - 1;
     str_buf[..final_len].to_string()
+}
+
+// [Not solved]
+// problem #1680. Concatenation of Consecutive Binary Numbers ~ Medium
+// You need binary shifting, below code doesn't work on high num.
+// todo: refactor using binary shifting technique,
+pub fn concatenated_binary(n: i32) -> i32 {
+    let mut str = String::new();
+    for i in 1..=n {
+        str.push_str(format!("{i:b}").as_str());
+    }
+    //use u128 instead so it doesn't overflow
+    let num = u128::from_str_radix(&str[..], 2).unwrap();
+    str.clear();
+    (num % 1000000007) as i32
 }
 #[cfg(test)]
 mod tests;

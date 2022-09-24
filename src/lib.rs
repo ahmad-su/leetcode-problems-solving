@@ -138,25 +138,23 @@ pub fn is_valid(s: String) -> bool {
 
 //problem #21. Merge Two Sorted List ~ Easy
 pub fn merge_two_lists(
-    list1: Option<Box<ListNode>>, 
-    list2: Option<Box<ListNode>>,) -> Option<Box<ListNode>> {
-
-        match (list1, list2) {
-            (None, None) => None,
-            (Some(x), None) | (None, Some(x)) => Some(x),
-            (Some(mut x),Some(mut y)) => {
-                if x.val <= y.val {
-                    x.next = merge_two_lists(Some(y), x.next);
-                    Some(x)
-                } else {
-                    y.next = merge_two_lists(Some(x), y.next);
-                    Some(y)
-                }
+    list1: Option<Box<ListNode>>,
+    list2: Option<Box<ListNode>>,
+) -> Option<Box<ListNode>> {
+    match (list1, list2) {
+        (None, None) => None,
+        (Some(x), None) | (None, Some(x)) => Some(x),
+        (Some(mut x), Some(mut y)) => {
+            if x.val <= y.val {
+                x.next = merge_two_lists(Some(y), x.next);
+                Some(x)
+            } else {
+                y.next = merge_two_lists(Some(x), y.next);
+                Some(y)
             }
         }
-
+    }
 }
-
 
 //problem #26. Remove Duplicates from Sorted Array ~ Easy
 pub fn remove_duplicates(nums: &mut Vec<i32>) -> i32 {
@@ -176,6 +174,21 @@ pub fn search_insert(nums: Vec<i32>, target: i32) -> i32 {
         Ok(n) => n as _,
         Err(n) => n as _,
     }
+}
+
+//Problem #58. Length of Last Word ~ Easy
+pub fn length_of_last_word(s: String) -> i32 {
+    let mut word = String::new();
+    for ch in s.chars().rev() {
+        if ch == ' ' {
+            if word.len() != 0 {
+                break;
+            }
+        } else {
+            word.push(ch)
+        }
+    }
+    word.len() as _
 }
 
 //problem #557. Reverse Words in a string III ~ Easy

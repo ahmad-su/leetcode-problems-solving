@@ -135,6 +135,16 @@ fn search_insert_worked(){
 
 }
 
+//Problem #58. Length of Last Word ~ Easy
+#[test]
+fn length_of_last_word_worked(){
+    let (s1, expect1) = ("Hello World".to_string(), 5);
+    let (s2, expect2) = ("   fly me   to   the moon  ".to_string(),4);
+
+    assert_eq!(length_of_last_word(s1), expect1);
+    assert_eq!(length_of_last_word(s2), expect2);
+}
+
 //problem #557. Reverse Words in a string ~ Easy
 #[test]
 fn reverse_words_worked() {

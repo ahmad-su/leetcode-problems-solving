@@ -152,6 +152,16 @@ fn reverse_words_worked() {
     assert_eq!(reverse_words(s), "s'teL ekat edoCteeL tsetnoc")
 }
 
+//problems #66. Plus One
+#[test]
+pub fn plus_one_worked(){
+    let (digits1, expect1) = (vec![4,3,2,1],vec![4,3,2,2]);
+    let (digits2, expect2) = (vec![9,9,9], vec![1,0,0,0]);
+
+    assert_eq!(plus_one(digits1), expect1);
+    assert_eq!(plus_one(digits2), expect2);
+}
+
 // problem #1680. Concatenation of Consecutive Binary Numbers
 #[test]
 fn concatenated_binary_worked() {

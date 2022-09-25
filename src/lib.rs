@@ -191,6 +191,29 @@ pub fn length_of_last_word(s: String) -> i32 {
     word.len() as _
 }
 
+//problems #66. Plus One
+pub fn plus_one(digits: Vec<i32>) -> Vec<i32> {
+    let mut carry = 1;
+    let mut digits = digits;
+    for n in &mut digits.iter_mut().rev() {
+        if *n + carry >= 10 {
+            *n = 10 - (*n + carry);
+            carry = 1;
+        } else {
+            *n = *n + carry;
+            carry = 0;
+            break;
+        }
+    }
+    if carry == 1 {
+        let mut carry = vec![carry];
+        carry.append(&mut digits);
+        carry
+    } else {
+        digits
+    }
+}
+
 //problem #557. Reverse Words in a string III ~ Easy
 pub fn reverse_words(s: String) -> String {
     let mut string_vec = Vec::<String>::new();

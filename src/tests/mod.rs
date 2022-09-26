@@ -145,13 +145,6 @@ fn length_of_last_word_worked(){
     assert_eq!(length_of_last_word(s2), expect2);
 }
 
-//problem #557. Reverse Words in a string ~ Easy
-#[test]
-fn reverse_words_worked() {
-    let s = "Let's take LeetCode contest".to_string();
-    assert_eq!(reverse_words(s), "s'teL ekat edoCteeL tsetnoc")
-}
-
 //problems #66. Plus One
 #[test]
 pub fn plus_one_worked(){
@@ -160,6 +153,26 @@ pub fn plus_one_worked(){
 
     assert_eq!(plus_one(digits1), expect1);
     assert_eq!(plus_one(digits2), expect2);
+}
+
+//problem #67. Add Binary ~ Easy
+#[test]
+pub fn add_binary_worked(){
+    let (a1, b1, expect1) = ("1010".to_string(), "1011".to_string(), "10101".to_string());
+    let (a2, b2, expect2) = ("1010".to_string(), "011".to_string(), "1101".to_string());
+    let (a3, b3, expect3) = ("101111".to_string(),
+    "10".to_string(),"110001".to_string());
+
+    assert_eq!(add_binary(a1, b1),expect1);
+    assert_eq!(add_binary(a2, b2),expect2);
+    assert_eq!(add_binary(a3, b3),expect3);
+}
+
+//problem #557. Reverse Words in a string ~ Easy
+#[test]
+fn reverse_words_worked() {
+    let s = "Let's take LeetCode contest".to_string();
+    assert_eq!(reverse_words(s), "s'teL ekat edoCteeL tsetnoc")
 }
 
 // problem #1680. Concatenation of Consecutive Binary Numbers

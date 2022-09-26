@@ -214,6 +214,68 @@ pub fn plus_one(digits: Vec<i32>) -> Vec<i32> {
     }
 }
 
+//problem #67. Add Binary ~ Easy
+pub fn add_binary(a: String, b: String) -> String {
+    let (mut a, mut b) = (a, b);
+    let mut buf = String::new();
+    let mut carry = '0';
+    loop {
+        match (a.pop(), b.pop(), carry) {
+            (None, None, '0') => {
+                break;
+            },
+            (None, None, '1') => {
+                buf.push('1');
+                carry = '0';
+                break;
+            },
+            (None, Some(ch), '0') | (Some(ch), None, '0') => {
+                if ch == '1' {
+                    buf.push('1');
+                    carry = '0'
+                } else {
+                    buf.push('0');
+                }
+            },
+            (None, Some(ch), '1') | (Some(ch), None, '1') => {
+                if ch == '1' {
+                    buf.push('0');
+                    carry = '1'
+                } else {
+                    buf.push('1');
+                    carry = '0';
+                }
+            },
+            (Some(c1), Some(c2), '0') => {
+                if c1 == '0' && c2 == '0' {
+                    buf.push('0');
+                    carry = '0';
+                } else if c1 == '1' && c2 == '1' {
+                    buf.push('0');
+                    carry = '1';
+                } else {
+                    buf.push('1');
+                    carry = '0';
+                }
+            },
+            (Some(c1), Some(c2), '1') => {
+                if c1 == '0' && c2 == '0' {
+                    buf.push('1');
+                    carry = '0';
+                } else if c1 == '1' && c2 == '1' {
+                    buf.push('1');
+                    carry = '1';
+                } else {
+                    buf.push('0');
+                    carry = '1';
+                }
+            },
+            _ => break,
+        }
+    }
+    buf.chars().rev().collect::<String>()
+}
+
 //problem #557. Reverse Words in a string III ~ Easy
 pub fn reverse_words(s: String) -> String {
     let mut string_vec = Vec::<String>::new();
